@@ -1,26 +1,33 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "name": "keid",
+  "private": false,
+  "description": "Website for the Keid programming language",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Lucas Baizer <lucas@keid.dev>",
   "dependencies": {
-    "gatsby": "^5.6.0",
-    "gatsby-plugin-image": "^3.6.0",
-    "gatsby-plugin-manifest": "^5.6.0",
-    "gatsby-plugin-sharp": "^5.6.0",
-    "gatsby-source-filesystem": "^5.6.0",
-    "gatsby-transformer-sharp": "^5.6.0",
+    "gatsby": "^4.16.2",
+    "gatsby-plugin-image": "^2.17.0",
+    "gatsby-plugin-manifest": "^4.17.0",
+    "gatsby-plugin-sharp": "^4.17.0",
+    "gatsby-remark-vscode": "^3.3.1",
+    "gatsby-source-filesystem": "^4.15.0",
+    "gatsby-transformer-remark": "^5.25.1",
+    "gatsby-transformer-sharp": "^4.17.0",
+    "keid": "keid-lang/keid-vscode",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "prettier": "^2.8.3"
+    "@types/node": "^18.13.0",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "prettier": "^2.8.3",
+    "typescript": "^4.9.5"
   },
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
+  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -30,12 +37,10 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
+  "repository": "https://github.com/keid-lang/keid.dev",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
-  "packageManager": "yarn@1.22.4"
+  "packageManager": "yarn@1.22.4",
+  "main": "index.js"
 }
