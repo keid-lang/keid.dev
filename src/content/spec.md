@@ -1,3 +1,8 @@
+---
+slug: "/spec"
+date: "2023-02-16"
+title: "Keid Language Specification"
+---
 # The Keid Programming Language
 
 Keid is a memory safe, object-oriented, ahead-of-time compiled programming language.

@@ -15,6 +15,13 @@ const config: GatsbyConfig = {
         path: 'src/images',
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'content',
+        path: 'src/content',
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
