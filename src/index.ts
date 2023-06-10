@@ -1,14 +1,13 @@
 import {marked} from 'marked';
 import oldfs from 'fs';
 import fs from 'fs/promises';
-import path from 'path';
 import {glob} from 'glob';
 
 async function clear() {
-    if (!oldfs.existsSync('dist')) {
-        await fs.mkdir('dist');
+    if (!oldfs.existsSync('docs')) {
+        await fs.mkdir('docs');
     }
-    const files = await glob('./dist/**/*');
+    const files = await glob('./docs/**/*');
     for (const file of files) {
         await fs.unlink(file);
     }
@@ -17,7 +16,7 @@ async function clear() {
 async function main() {
     await clear();
 
-    const files = await glob('./docs/**/*.md');
+    const files = await glob('./src/docs/**/*.md');
     for (const file of files) {
         const markdown = await fs.readFile(file, 'utf8');
         const html = await marked(markdown, {
@@ -26,7 +25,7 @@ async function main() {
             async: true,
         });
 
-        let new_path = 'dist' + file.substring(4, file.length - 2) + 'html';
+        let new_path = 'docs' + file.substring(8, file.length - 2) + 'html';
         await fs.writeFile(new_path, html, 'utf8');
     }
 }
