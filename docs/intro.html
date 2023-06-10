@@ -34,16 +34,6 @@
                 padding: 25px 0px 0px 25px
             }
         </style>
-        <script>
-            document.onload = () => {
-                const pathname = window.location.pathname;
-                console.log(pathname);
-                const link = document.getElementById('link-' + pathname);
-                if (link !== null) {
-                    link.style.color = '#0000EE';
-                }
-            };
-        </script>
     </head>
     <body>
         <div class="container">
@@ -96,5 +86,13 @@ As an LLVM frontend, Keid is capable of targeting a wide range of processor arch
                 </div>
             </div>
         </div>
+        <script>
+            console.log('here');
+            const pathname = window.location.pathname;
+            const link = document.getElementById('link-' + pathname);
+            if (link !== null) {
+                link.style.color = '#0000EE';
+            }
+        </script>
     </body>
 </html>
