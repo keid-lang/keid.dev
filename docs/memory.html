@@ -8,23 +8,55 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <hr>
-<h2>step: 1</h2>
-<h1>Memory</h1>
-<p><strong>Keid is a memory-safe language.</strong> Unless there is explicitly unsafe code (e.g. calling an external C function), a Keid program should never have a segmentation fault.</p>
-<h2>Object Reference Counting</h2>
-<p>The Keid runtime manages the allocation and freeing of objects stored in the heap. Garbage collectors are a common implementation of determining when memory should be freed. This is how languages like Java, C#, Go, and many other languages free memory.</p>
-<p>Instead of garbage collection, Keid uses Object Reference Counting (ORC) in its memory model. This is used in languages like Swift and Objective-C.</p>
-<p>Each object in the heap has a metadata value representing how many active references there are to the object.</p>
-<p>When an object enters a new context, its reference count is increased by one.</p>
-<p>When an object exits the context, its reference count is decreased by one. If the result is equal to zero, meaning that there are zero references to the object, its <a href="#Destructors">destructor</a> is invoked and then its memory is freed.</p>
-<h2>Destructors</h2>
-<p>Destructors are functions that are invoked on every object immediately before they are freed.
+                <div class="col-md-2">
+                    <ol>
+                        <li>
+                            <a href="/index">
+                                <b>0.</b>&nbsp;The Keid Programming Language
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/intro">
+                                <b>1.</b>&nbsp;Introduction
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/memory">
+                                <b>1.1</b>&nbsp;Memory
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/types">
+                                <b>1.2</b>&nbsp;Types
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/undefined-behavior">
+                                <b>1.3</b>&nbsp;Undefined Behavior
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/objects">
+                                <b>1.4</b>&nbsp;Objects
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-md-10">
+                    &lt;h1&gt;Memory&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Keid is a memory-safe language.&lt;/strong&gt; Unless there is explicitly unsafe code (e.g. calling an external C function), a Keid program should never have a segmentation fault.&lt;/p&gt;
+&lt;h2&gt;Object Reference Counting&lt;/h2&gt;
+&lt;p&gt;The Keid runtime manages the allocation and freeing of objects stored in the heap. Garbage collectors are a common implementation of determining when memory should be freed. This is how languages like Java, C#, Go, and many other languages free memory.&lt;/p&gt;
+&lt;p&gt;Instead of garbage collection, Keid uses Object Reference Counting (ORC) in its memory model. This is used in languages like Swift and Objective-C.&lt;/p&gt;
+&lt;p&gt;Each object in the heap has a metadata value representing how many active references there are to the object.&lt;/p&gt;
+&lt;p&gt;When an object enters a new context, its reference count is increased by one.&lt;/p&gt;
+&lt;p&gt;When an object exits the context, its reference count is decreased by one. If the result is equal to zero, meaning that there are zero references to the object, its &lt;a href&#x3D;&quot;#Destructors&quot;&gt;destructor&lt;/a&gt; is invoked and then its memory is freed.&lt;/p&gt;
+&lt;h2&gt;Destructors&lt;/h2&gt;
+&lt;p&gt;Destructors are functions that are invoked on every object immediately before they are freed.
 The compiler automatically generates destructors to free its fields.
-In Keid you can define a destructor that will be invoked before the compiler-generated part of the destructor executes.</p>
-<pre><code class="language-keid">class HandleHolder {
-    handle: Pointer&lt;void&gt;
+In Keid you can define a destructor that will be invoked before the compiler-generated part of the destructor executes.&lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-keid&quot;&gt;class HandleHolder {
+    handle: Pointer&amp;lt;void&amp;gt;
 
     destructor {
         // call into the external C library to close the handle
@@ -33,7 +65,7 @@ In Keid you can define a destructor that will be invoked before the compiler-gen
         }
     }
 }
-</code></pre>
+&lt;/code&gt;&lt;/pre&gt;
 
                 </div>
             </div>

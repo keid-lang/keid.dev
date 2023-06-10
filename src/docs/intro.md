@@ -1,3 +1,7 @@
+---
+{"name": "Introduction", "major": 1}
+---
+
 # Introduction to Keid
 
 Keid is a cross-platform, strongly-typed, object-oriented, natively compiled programming language.

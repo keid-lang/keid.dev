@@ -1,5 +1,5 @@
 ---
-step: 3
+{"name": "Objects", "major": 1, "minor": 4}
 ---
 
 # Declaring Types

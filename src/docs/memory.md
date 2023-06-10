@@ -1,5 +1,5 @@
 ---
-step: 1
+{"name": "Memory", "major": 1, "minor": 1}
 ---
 
 # Memory

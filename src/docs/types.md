@@ -1,5 +1,5 @@
 ---
-step: 2
+{"name": "Types", "major": 1, "minor": 2}
 ---
 
 # Types

@@ -8,8 +8,19 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    </MARKDOWN>
+                <div class="col-md-2">
+                    <ol>
+                    {{#each pages}}
+                        <li>
+                            <a href="{{this/url}}">
+                                <b>{{this/section}}</b>&nbsp;{{this/name}}
+                            </a>
+                        </li>
+                    {{/each}}
+                    </ol>
+                </div>
+                <div class="col-md-10">
+                    {{markdown}}
                 </div>
             </div>
         </div>

@@ -8,29 +8,95 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <hr>
-<h2>step: 2</h2>
-<h1>Types</h1>
-<p>All variables in Keid are strongly typed, along with polymorphic behavior for object types.</p>
-<h3>Primitive Types</h3>
-<ul>
-<li><code>void</code> - At compile time, <code>void</code> can be used in generic arguments or as a function return value to indicate a lack of data. Variables cannot be <code>void</code>.</li>
-<li><code>bool</code> - 8-bit integer; a value of <code>0</code> is false, a value of <code>1</code> is true, and any other value is <a href="/undefined-behavior">undefined behavior</a>.</li>
-<li><code>char</code> - 8-bit integer representing an ASCII character</li>
-<li><code>int8</code> - 8-bit signed integer</li>
-<li><code>int16</code> - 16-bit signed integer</li>
-<li><code>int32</code> - 32-bit signed integer</li>
-<li><code>int64</code> - 64-bit signed integer</li>
-<li><code>isize</code> - architecture-bit signed integer (e.g. 32-bit when targeting <code>i386</code>, 64-bit when targeting <code>x86_64</code>)</li>
-<li><code>uint8</code> - 8-bit unsigned integer</li>
-<li><code>uint16</code> - 16-bit unsigned integer</li>
-<li><code>uint32</code> - 32-bit unsigned integer</li>
-<li><code>uint64</code> - 64-bit unsigned integer</li>
-<li><code>usize</code> - architecture-bit unsigned integer (e.g. 32-bit when targeting <code>i386</code>, 64-bit when targeting <code>x86_64</code>)</li>
-<li><code>float32</code> - 32-bit IEEE-754 floating point number</li>
-<li><code>float64</code> - 64-bit IEEE-754 floating point number</li>
-</ul>
+                <div class="col-md-2">
+                    <ol>
+                        <li>
+                            <a href="/index">
+                                <b>0.</b>&nbsp;The Keid Programming Language
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/intro">
+                                <b>1.</b>&nbsp;Introduction
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/memory">
+                                <b>1.1</b>&nbsp;Memory
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/types">
+                                <b>1.2</b>&nbsp;Types
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/undefined-behavior">
+                                <b>1.3</b>&nbsp;Undefined Behavior
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/objects">
+                                <b>1.4</b>&nbsp;Objects
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-md-10">
+                    &lt;h1&gt;Types&lt;/h1&gt;
+&lt;p&gt;All variables in Keid are strongly typed, along with polymorphic behavior for object types.&lt;/p&gt;
+&lt;h3&gt;Primitive Types&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;void&lt;/code&gt; - At compile time, &lt;code&gt;void&lt;/code&gt; can be used in generic arguments or as a function return value to indicate a lack of data. Variables cannot be &lt;code&gt;void&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bool&lt;/code&gt; - 8-bit integer; a value of &lt;code&gt;0&lt;/code&gt; is false, a value of &lt;code&gt;1&lt;/code&gt; is true, and any other value is &lt;a href&#x3D;&quot;/undefined-behavior&quot;&gt;undefined behavior&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;char&lt;/code&gt; - 8-bit integer representing an ASCII character&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;int8&lt;/code&gt; - 8-bit signed integer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;int16&lt;/code&gt; - 16-bit signed integer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;int32&lt;/code&gt; - 32-bit signed integer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;int64&lt;/code&gt; - 64-bit signed integer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;isize&lt;/code&gt; - architecture-bit signed integer (e.g. 32-bit when targeting &lt;code&gt;i386&lt;/code&gt;, 64-bit when targeting &lt;code&gt;x86_64&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;uint8&lt;/code&gt; - 8-bit unsigned integer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;uint16&lt;/code&gt; - 16-bit unsigned integer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;uint32&lt;/code&gt; - 32-bit unsigned integer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;uint64&lt;/code&gt; - 64-bit unsigned integer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;usize&lt;/code&gt; - architecture-bit unsigned integer (e.g. 32-bit when targeting &lt;code&gt;i386&lt;/code&gt;, 64-bit when targeting &lt;code&gt;x86_64&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;float32&lt;/code&gt; - 32-bit IEEE-754 floating point number&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;float64&lt;/code&gt; - 64-bit IEEE-754 floating point number&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Nullable Types&lt;/h3&gt;
+&lt;p&gt;All variables in Keid need to be initialized at declaration.
+To represent an abscence of a value, Keid has nullable types.&lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-keid&quot;&gt;let x: ?int32 &#x3D; null
+...
+if x !&#x3D; null {
+    // x is guaranteed to not be null at this point
+    // thus, inside of this code block, the type of the variable &#x60;x&#x60; is &#x60;int32&#x60; and not &#x60;?int32&#x60;
+    std::io::println(&amp;quot;x &#x3D; &amp;quot;, x.to_string())
+} else {
+    std::io::println(&amp;quot;x is null!&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To make a type nullable, just prefix it with the &lt;code&gt;?&lt;/code&gt; type modifier.&lt;/p&gt;
+&lt;h3&gt;Type Literals&lt;/h3&gt;
+&lt;p&gt;Integer literals can be written simply as &lt;code&gt;123&lt;/code&gt; in decimal or &lt;code&gt;0xff&lt;/code&gt; for hex. To specify the type of the integer literal, you can suffix it with the name of the type, e.g. &lt;code&gt;0x7f:uint8&lt;/code&gt; or &lt;code&gt;100.0:float64&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-keid&quot;&gt;let w: uint32 &#x3D; 0         // works
+let x: uint32 &#x3D; 10:uint32 // works
+let y: uint32 &#x3D; 20:uint64 // compile error
+let z &#x3D; 5:float32         // works
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Boolean literals are either &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt;. &lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-keid&quot;&gt;let x: bool &#x3D; true // works
+let y &#x3D; false      // works
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;String literals are surrounded with double quotes.&lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-keid&quot;&gt;let x &#x3D; &amp;quot;hello, world!&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Character literals are surrounded with single quotes.&lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-keid&quot;&gt;let x &#x3D; &amp;#39;h&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nullable types can be assigned the null literal.&lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-keid&quot;&gt;let x: ?uint8 &#x3D; null
+&lt;/code&gt;&lt;/pre&gt;
 
                 </div>
             </div>

@@ -1,7 +1,7 @@
+---
+{"name": "The Keid Programming Language", "major": 0}
+---
+
 # Keid Programming Language
 
-Check out some docs!
-
-[Memory, ORC, and Destructors](/memory)
-
-[Classes, Structs, and Interfaces](/objects)
+Check out some docs! They're on the sidebar now!

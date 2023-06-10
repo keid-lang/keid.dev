@@ -1,3 +1,7 @@
+---
+{"name": "Undefined Behavior", "major": 1, "minor": 3}
+---
+
 # Undefined Behavior
 
 Keid is designed so that it is impossible for the compiler to output any code with undefined behavior. Any bug that causes this to happen should be reported!
