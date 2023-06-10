@@ -1,0 +1,54 @@
+<hr>
+<h2>step: 2</h2>
+<h1>Declaring Types</h1>
+<p>There are three different declarable types in Keid: class types, struct types, and interface types. </p>
+<h2>Class Types</h2>
+<p>Class types are stored in the heap and have their managed by the Keid runtime. Their memory is diposed of using reference counting. Instances of class types can simply be thought of as a reference to memory in the heap.</p>
+<pre><code class="language-keid">class Person {
+    age: uint32
+    name: string
+
+    say_hello() {
+        std::io::println(&quot;Hello, I am &quot;, this.name, &quot;!&quot;)
+    }
+}
+</code></pre>
+<h2>Struct Types</h2>
+<p>Struct types are syntactically declared nearly identially to classes.
+The only difference is that the <code>class</code> keyword becomes the <code>struct</code> keyword.</p>
+<pre><code class="language-keid">struct Person {
+    age: uint32
+    name: string
+
+    say_hello() {
+        std::io::println(&quot;Hello, I am &quot;, this.name, &quot;!&quot;)
+    }
+}
+</code></pre>
+<p>This code will produce the same output at the class declaration, but structs and classes don&#39;t have identical behavior.
+There is a fundamental difference in how class types and struct types are stored in memory.</p>
+<p>Structs are stored on the stack and are treated the same as primitive types.
+When passed to functions, a full copy of the struct is made.
+Simply put, structs types are pass-by-value.</p>
+<h2>Interface Types</h2>
+<p>Interfaces are very different than classes and structs.
+Interfaces can only declare function and accessor headers, as well as associated types.</p>
+<pre><code class="language-keid">interface Foo {
+    type Output
+
+    do_a_foo(x: string, y: uint32): Output
+}
+
+implement Foo for Bar {
+    type Output = int8
+
+    do_a_foo(x: string, y: uint32): int8 {
+        ...
+    }
+}
+</code></pre>
+<h3>Associated Types</h3>
+<p>TODO</p>
+<h1>Structs and Objects</h1>
+<p>The term &quot;object&quot; is abstract by nature and can mean various things in various contexts. In Keid, an object is defined as &quot;an instance of a class or interface type&quot;. Another way to conceptualize this is that something is an object if its data stored in the heap.</p>
+<p>Per this definition, struct types and primitives (i.e. anything pass-by-value) are not objects. Struct types are are not assignable to a <code>core::object::Object</code>.</p>
