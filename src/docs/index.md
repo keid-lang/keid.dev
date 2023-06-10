@@ -1,4 +1,3 @@
-
 # Keid Programming Language
 
 Check out some docs!

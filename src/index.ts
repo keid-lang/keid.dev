@@ -17,6 +17,7 @@ async function main() {
     await clear();
 
     const files = await glob('./src/docs/**/*.md');
+    const standardPage = await fs.readFile('./src/docs/standard-page.html', 'utf8');
     for (const file of files) {
         const markdown = await fs.readFile(file, 'utf8');
         const html = await marked(markdown, {
@@ -25,8 +26,9 @@ async function main() {
             async: true,
         });
 
+        const replaced = standardPage.replace('</MARKDOWN>', html);
         let new_path = 'docs' + file.substring(8, file.length - 2) + 'html';
-        await fs.writeFile(new_path, html, 'utf8');
+        await fs.writeFile(new_path, replaced, 'utf8');
     }
 }
 
