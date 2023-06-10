@@ -109,7 +109,9 @@ In Keid you can define a destructor that will be invoked before the compiler-gen
         <script>
             console.log('here');
             const pathname = window.location.pathname;
+            console.log(pathname);
             const link = document.getElementById('link-' + pathname);
+            console.log(link);
             if (link !== null) {
                 link.style.color = '#0000EE';
             }

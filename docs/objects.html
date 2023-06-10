@@ -138,7 +138,9 @@ implement Foo for Bar {
         <script>
             console.log('here');
             const pathname = window.location.pathname;
+            console.log(pathname);
             const link = document.getElementById('link-' + pathname);
+            console.log(link);
             if (link !== null) {
                 link.style.color = '#0000EE';
             }
