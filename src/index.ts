@@ -30,6 +30,8 @@ async function main() {
         let new_path = 'docs' + file.substring(8, file.length - 2) + 'html';
         await fs.writeFile(new_path, replaced, 'utf8');
     }
+
+    await fs.writeFile('docs/CNAME', 'keid.dev', 'utf8');
 }
 
 main();
