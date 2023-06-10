@@ -2,6 +2,6 @@
 
 Check out some docs!
 
-[Memory, ORC, and Destructors](memory.html)
+[Memory, ORC, and Destructors](/memory)
 
-[Classes, Structs, and Interfaces](objects.html)
+[Classes, Structs, and Interfaces](/objects)
