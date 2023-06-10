@@ -6,7 +6,7 @@ step: 1
 
 **Keid is a memory-safe language.** Unless there is explicitly unsafe code (e.g. calling an external C function), a Keid program should never have a segmentation fault.
 
-## Object Reference Counting.
+## Object Reference Counting
 
 The Keid runtime manages the allocation and freeing of objects stored in the heap. Garbage collectors are a common implementation of determining when memory should be freed. This is how languages like Java, C#, Go, and many other languages free memory.
 
