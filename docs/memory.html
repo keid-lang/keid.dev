@@ -27,11 +27,12 @@
             .sidebar {
                 background-color: #eeeeee;
                 min-height: 100vh;
-                padding: 25px 0px 0px 0px
+                padding: 25px 0px 0px 0px;
             }
 
             .content {
-                padding: 25px 0px 0px 25px
+                padding: 25px 0px 0px 25px;
+                margin-bottom: 100px;
             }
         </style>
     </head>
@@ -107,11 +108,8 @@ In Keid you can define a destructor that will be invoked before the compiler-gen
             </div>
         </div>
         <script>
-            console.log('here');
             const pathname = window.location.pathname;
-            console.log(pathname);
             const link = document.getElementById('link-' + pathname);
-            console.log(link);
             if (link !== null) {
                 link.style.color = '#0000EE';
             }
