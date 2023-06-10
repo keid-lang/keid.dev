@@ -4,51 +4,97 @@
         <title>Keid Programming Language</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <style>
+            li {
+                list-style-type: none;
+            }
+
+            .container {
+                max-width: 100vw !important;
+            }
+
+            .sidebar-link {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .sidebar-link:hover {
+                color: #0000EE;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .sidebar {
+                background-color: #eeeeee;
+                min-height: 100vh;
+                padding: 25px 0px 0px 0px
+            }
+
+            .content {
+                padding: 25px 0px 0px 25px
+            }
+        </style>
+        <script>
+            document.onload = () => {
+                const pathname = window.location.pathname;
+                console.log(pathname);
+                const link = document.getElementById('link-' + pathname);
+                if (link !== null) {
+                    link.style.color = '#0000EE';
+                }
+            };
+        </script>
     </head>
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 sidebar">
                     <ol>
                         <li>
-                            <a href="/index">
+                            <a href="/index" class="sidebar-link" id="link-/index">
+                                <!-- triple handlebars so we can use nbsp -->
                                 <b>0.</b>&nbsp;The Keid Programming Language
                             </a>
                         </li>
                         <li>
-                            <a href="/intro">
+                            <a href="/intro" class="sidebar-link" id="link-/intro">
+                                <!-- triple handlebars so we can use nbsp -->
                                 <b>1.</b>&nbsp;Introduction
                             </a>
                         </li>
                         <li>
-                            <a href="/memory">
-                                <b>1.1</b>&nbsp;Memory
+                            <a href="/memory" class="sidebar-link" id="link-/memory">
+                                <!-- triple handlebars so we can use nbsp -->
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.1</b>&nbsp;Memory
                             </a>
                         </li>
                         <li>
-                            <a href="/types">
-                                <b>1.2</b>&nbsp;Types
+                            <a href="/types" class="sidebar-link" id="link-/types">
+                                <!-- triple handlebars so we can use nbsp -->
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.2</b>&nbsp;Types
                             </a>
                         </li>
                         <li>
-                            <a href="/undefined-behavior">
-                                <b>1.3</b>&nbsp;Undefined Behavior
+                            <a href="/undefined-behavior" class="sidebar-link" id="link-/undefined-behavior">
+                                <!-- triple handlebars so we can use nbsp -->
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.3</b>&nbsp;Undefined Behavior
                             </a>
                         </li>
                         <li>
-                            <a href="/objects">
-                                <b>1.4</b>&nbsp;Objects
+                            <a href="/objects" class="sidebar-link" id="link-/objects">
+                                <!-- triple handlebars so we can use nbsp -->
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.4</b>&nbsp;Objects
                             </a>
                         </li>
                     </ol>
                 </div>
-                <div class="col-md-10">
-                    &lt;h1&gt;Undefined Behavior&lt;/h1&gt;
-&lt;p&gt;Keid is designed so that it is impossible for the compiler to output any code with undefined behavior. Any bug that causes this to happen should be reported!&lt;/p&gt;
-&lt;p&gt;If you&amp;#39;re not familiar with what undefined behavior is, &lt;a href&#x3D;&quot;https://en.wikipedia.org/wiki/Undefined_behavior&quot;&gt;this Wikipedia page&lt;/a&gt; on the topic is a useful introduction.&lt;/p&gt;
-&lt;p&gt;As a short summary, undefined behavior (UB) is behavior that is not defined by the specification of the language. (This definition is simplified for the sake of brevity here.) For example, booleans in Keid are defined to either have a value of &lt;code&gt;0&lt;/code&gt; or &lt;code&gt;1&lt;/code&gt; and that any other value is &lt;em&gt;undefined behavior&lt;/em&gt;. &lt;code&gt;2&lt;/code&gt; is not true or false, and any boolean operations or if statements using the value will have unpredicatable &lt;em&gt;undefined behavior&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;The Keid compiler makes a guarantee to the programmer that it will never output code with undefined behavior. With that being said, programmers can hack and circumvent this; perhaps with &lt;em&gt;unsafe&lt;/em&gt; pointer operations. It is the responsibility of the programmer to ensure that their &lt;em&gt;unsafe&lt;/em&gt; code does not actually cause UB.&lt;/p&gt;
-
+                <div class="col-md-8 content">
+                    <h1>Undefined Behavior</h1>
+<p>Keid is designed so that it is impossible for the compiler to output any code with undefined behavior. Any bug that causes this to happen should be reported!</p>
+<p>If you&#39;re not familiar with what undefined behavior is, <a href="https://en.wikipedia.org/wiki/Undefined_behavior">this Wikipedia page</a> on the topic is a useful introduction.</p>
+<p>As a short summary, undefined behavior (UB) is behavior that is not defined by the specification of the language. (This definition is simplified for the sake of brevity here.) For example, booleans in Keid are defined to either have a value of <code>0</code> or <code>1</code> and that any other value is <em>undefined behavior</em>. <code>2</code> is not true or false, and any boolean operations or if statements using the value will have unpredicatable <em>undefined behavior</em>.</p>
+<p>The Keid compiler makes a guarantee to the programmer that it will never output code with undefined behavior. With that being said, programmers can hack and circumvent this; perhaps with <em>unsafe</em> pointer operations. It is the responsibility of the programmer to ensure that their <em>unsafe</em> code does not actually cause UB.</p>
+ <!-- triple handlebars doesn't escape the variable, which we need here-->
                 </div>
             </div>
         </div>

@@ -4,25 +4,63 @@
         <title>Keid Programming Language</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <style>
+            li {
+                list-style-type: none;
+            }
+
+            .container {
+                max-width: 100vw !important;
+            }
+
+            .sidebar-link {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .sidebar-link:hover {
+                color: #0000EE;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .sidebar {
+                background-color: #eeeeee;
+                min-height: 100vh;
+                padding: 25px 0px 0px 0px
+            }
+
+            .content {
+                padding: 25px 0px 0px 25px
+            }
+        </style>
     </head>
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 sidebar">
                     <ol>
                     {{#each pages}}
                         <li>
-                            <a href="{{this/url}}">
-                                <b>{{this/section}}</b>&nbsp;{{this/name}}
+                            <a href="{{this/url}}" class="sidebar-link" id="link-{{this/url}}">
+                                <!-- triple handlebars so we can use nbsp -->
+                                <b>{{{this/section}}}</b>&nbsp;{{this/name}}
                             </a>
                         </li>
                     {{/each}}
                     </ol>
                 </div>
-                <div class="col-md-10">
-                    {{markdown}}
+                <div class="col-md-8 content">
+                    {{{markdown}}} <!-- triple handlebars doesn't escape the variable, which we need here-->
                 </div>
             </div>
         </div>
+        <script>
+            const pathname = window.location.pathname;
+            const link = document.getElementById('link-' + pathname);
+            if (link !== null) {
+                link.style.color = '#0000EE';
+            }
+        </script>
     </body>
 </html>

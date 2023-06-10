@@ -90,10 +90,14 @@ async function main() {
 
     const sidebarPages: SidebarPage[] = [];
     for (const markdownPage of markdownPages) {
-        const section = markdownPage.major + '.' + (markdownPage.minor?.toString() ?? '');
+        let section = markdownPage.major + '.' + (markdownPage.minor?.toString() ?? '');
+        let name = markdownPage.name;
+        if (markdownPage.minor != null) {
+            section = '&nbsp;&nbsp;&nbsp;&nbsp;' + section;
+        }
 
         sidebarPages.push({
-            name: markdownPage.name,
+            name,
             section,
             url: markdownPage.url
         });

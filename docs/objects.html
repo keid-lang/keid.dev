@@ -4,98 +4,144 @@
         <title>Keid Programming Language</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <style>
+            li {
+                list-style-type: none;
+            }
+
+            .container {
+                max-width: 100vw !important;
+            }
+
+            .sidebar-link {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .sidebar-link:hover {
+                color: #0000EE;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .sidebar {
+                background-color: #eeeeee;
+                min-height: 100vh;
+                padding: 25px 0px 0px 0px
+            }
+
+            .content {
+                padding: 25px 0px 0px 25px
+            }
+        </style>
+        <script>
+            document.onload = () => {
+                const pathname = window.location.pathname;
+                console.log(pathname);
+                const link = document.getElementById('link-' + pathname);
+                if (link !== null) {
+                    link.style.color = '#0000EE';
+                }
+            };
+        </script>
     </head>
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 sidebar">
                     <ol>
                         <li>
-                            <a href="/index">
+                            <a href="/index" class="sidebar-link" id="link-/index">
+                                <!-- triple handlebars so we can use nbsp -->
                                 <b>0.</b>&nbsp;The Keid Programming Language
                             </a>
                         </li>
                         <li>
-                            <a href="/intro">
+                            <a href="/intro" class="sidebar-link" id="link-/intro">
+                                <!-- triple handlebars so we can use nbsp -->
                                 <b>1.</b>&nbsp;Introduction
                             </a>
                         </li>
                         <li>
-                            <a href="/memory">
-                                <b>1.1</b>&nbsp;Memory
+                            <a href="/memory" class="sidebar-link" id="link-/memory">
+                                <!-- triple handlebars so we can use nbsp -->
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.1</b>&nbsp;Memory
                             </a>
                         </li>
                         <li>
-                            <a href="/types">
-                                <b>1.2</b>&nbsp;Types
+                            <a href="/types" class="sidebar-link" id="link-/types">
+                                <!-- triple handlebars so we can use nbsp -->
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.2</b>&nbsp;Types
                             </a>
                         </li>
                         <li>
-                            <a href="/undefined-behavior">
-                                <b>1.3</b>&nbsp;Undefined Behavior
+                            <a href="/undefined-behavior" class="sidebar-link" id="link-/undefined-behavior">
+                                <!-- triple handlebars so we can use nbsp -->
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.3</b>&nbsp;Undefined Behavior
                             </a>
                         </li>
                         <li>
-                            <a href="/objects">
-                                <b>1.4</b>&nbsp;Objects
+                            <a href="/objects" class="sidebar-link" id="link-/objects">
+                                <!-- triple handlebars so we can use nbsp -->
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.4</b>&nbsp;Objects
                             </a>
                         </li>
                     </ol>
                 </div>
-                <div class="col-md-10">
-                    &lt;h1&gt;Declaring Types&lt;/h1&gt;
-&lt;p&gt;There are three different declarable types in Keid: class types, struct types, and interface types. &lt;/p&gt;
-&lt;h2&gt;Class Types&lt;/h2&gt;
-&lt;p&gt;Class types are stored in the heap and have their managed by the Keid runtime. Their memory is diposed of using reference counting. Instances of class types can simply be thought of as a reference to memory in the heap.&lt;/p&gt;
-&lt;pre&gt;&lt;code class&#x3D;&quot;language-keid&quot;&gt;class Person {
+                <div class="col-md-8 content">
+                    <h1>Declaring Types</h1>
+<p>There are three different declarable types in Keid: class types, struct types, and interface types. </p>
+<h2>Class Types</h2>
+<p>Class types are stored in the heap and have their managed by the Keid runtime. Their memory is diposed of using reference counting. Instances of class types can simply be thought of as a reference to memory in the heap.</p>
+<pre><code class="language-keid">class Person {
     age: uint32
     name: string
 
     say_hello() {
-        std::io::println(&amp;quot;Hello, I am &amp;quot;, this.name, &amp;quot;!&amp;quot;)
+        std::io::println(&quot;Hello, I am &quot;, this.name, &quot;!&quot;)
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2&gt;Struct Types&lt;/h2&gt;
-&lt;p&gt;Struct types are syntactically declared nearly identially to classes.
-The only difference is that the &lt;code&gt;class&lt;/code&gt; keyword becomes the &lt;code&gt;struct&lt;/code&gt; keyword.&lt;/p&gt;
-&lt;pre&gt;&lt;code class&#x3D;&quot;language-keid&quot;&gt;struct Person {
+</code></pre>
+<h2>Struct Types</h2>
+<p>Struct types are syntactically declared nearly identially to classes.
+The only difference is that the <code>class</code> keyword becomes the <code>struct</code> keyword.</p>
+<pre><code class="language-keid">struct Person {
     age: uint32
     name: string
 
     say_hello() {
-        std::io::println(&amp;quot;Hello, I am &amp;quot;, this.name, &amp;quot;!&amp;quot;)
+        std::io::println(&quot;Hello, I am &quot;, this.name, &quot;!&quot;)
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This code will produce the same output at the class declaration, but structs and classes don&amp;#39;t have identical behavior.
-There is a fundamental difference in how class types and struct types are stored in memory.&lt;/p&gt;
-&lt;p&gt;Structs are stored on the stack and are treated the same as primitive types.
+</code></pre>
+<p>This code will produce the same output at the class declaration, but structs and classes don&#39;t have identical behavior.
+There is a fundamental difference in how class types and struct types are stored in memory.</p>
+<p>Structs are stored on the stack and are treated the same as primitive types.
 When passed to functions, a full copy of the struct is made.
-Simply put, structs types are pass-by-value.&lt;/p&gt;
-&lt;h2&gt;Interface Types&lt;/h2&gt;
-&lt;p&gt;Interfaces are very different than classes and structs.
-Interfaces can only declare function and accessor headers, as well as associated types.&lt;/p&gt;
-&lt;pre&gt;&lt;code class&#x3D;&quot;language-keid&quot;&gt;interface Foo {
+Simply put, structs types are pass-by-value.</p>
+<h2>Interface Types</h2>
+<p>Interfaces are very different than classes and structs.
+Interfaces can only declare function and accessor headers, as well as associated types.</p>
+<pre><code class="language-keid">interface Foo {
     type Output
 
     do_a_foo(x: string, y: uint32): Output
 }
 
 implement Foo for Bar {
-    type Output &#x3D; int8
+    type Output = int8
 
     do_a_foo(x: string, y: uint32): int8 {
         ...
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3&gt;Associated Types&lt;/h3&gt;
-&lt;p&gt;TODO&lt;/p&gt;
-&lt;h1&gt;Structs and Objects&lt;/h1&gt;
-&lt;p&gt;The term &amp;quot;object&amp;quot; is abstract by nature and can mean various things in various contexts. In Keid, an object is defined as &amp;quot;an instance of a class or interface type&amp;quot;. Another way to conceptualize this is that something is an object if its data stored in the heap.&lt;/p&gt;
-&lt;p&gt;Per this definition, struct types and primitives (i.e. anything pass-by-value) are not objects. Struct types are are not assignable to a &lt;code&gt;core::object::Object&lt;/code&gt;.&lt;/p&gt;
-
+</code></pre>
+<h3>Associated Types</h3>
+<p>TODO</p>
+<h1>Structs and Objects</h1>
+<p>The term &quot;object&quot; is abstract by nature and can mean various things in various contexts. In Keid, an object is defined as &quot;an instance of a class or interface type&quot;. Another way to conceptualize this is that something is an object if its data stored in the heap.</p>
+<p>Per this definition, struct types and primitives (i.e. anything pass-by-value) are not objects. Struct types are are not assignable to a <code>core::object::Object</code>.</p>
+ <!-- triple handlebars doesn't escape the variable, which we need here-->
                 </div>
             </div>
         </div>
