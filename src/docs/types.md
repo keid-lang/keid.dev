@@ -9,7 +9,7 @@ All variables in Keid are strongly typed, along with polymorphic behavior for ob
 ### Primitive Types
 
 * `void` - At compile time, `void` can be used in generic arguments or as a function return value to indicate a lack of data. Variables cannot be `void`.
-* `bool` - 8-bit integer; a value of `0` is false, a value of `1` is true, and any other value is [undefined behavior](/undefined-behavior).
+* `bool` - 8-bit integer; a value of `0` is false, a value of `1` is true, and any other value is [undefined behavior](undefined-behavior).
 * `char` - 8-bit integer representing an ASCII character
 * `int8` - 8-bit signed integer
 * `int16` - 16-bit signed integer
