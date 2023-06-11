@@ -53,7 +53,7 @@ async function renderMarkdown(): Promise<MarkdownDocument[]> {
 
         const jsonText = metadata[1];
         const json = JSON.parse(jsonText);
-        let url = file.substring(8, file.length - 3);
+        let url = file.substring(9, file.length - 3);
 
         documents.push({
             ...json,
@@ -112,7 +112,7 @@ async function main() {
             pages: sidebarPages,
         });
 
-        let newPath = 'docs/book' + markdownPage.url + '.html';
+        let newPath = 'docs/book/' + markdownPage.url + '.html';
         let newPathParent = path.dirname(newPath);
         if (!oldfs.existsSync(newPathParent)) {
             await fs.mkdir(newPathParent, {
