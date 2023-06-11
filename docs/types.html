@@ -60,26 +60,38 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/types" class="sidebar-link" id="link-/types">
+                            <a href="/undefined-behavior" class="sidebar-link" id="link-/undefined-behavior">
                                 <!-- triple handlebars so we can use nbsp -->
-                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.2</b>&nbsp;Types
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.2</b>&nbsp;Undefined Behavior
                             </a>
                         </li>
                         <li>
-                            <a href="/undefined-behavior" class="sidebar-link" id="link-/undefined-behavior">
+                            <a href="/basics" class="sidebar-link" id="link-/basics">
                                 <!-- triple handlebars so we can use nbsp -->
-                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.3</b>&nbsp;Undefined Behavior
+                                <b>2.</b>&nbsp;Basics
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/hello-world" class="sidebar-link" id="link-/hello-world">
+                                <!-- triple handlebars so we can use nbsp -->
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;2.1</b>&nbsp;Hello, World!
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/types" class="sidebar-link" id="link-/types">
+                                <!-- triple handlebars so we can use nbsp -->
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;2.2</b>&nbsp;Types
                             </a>
                         </li>
                         <li>
                             <a href="/objects" class="sidebar-link" id="link-/objects">
                                 <!-- triple handlebars so we can use nbsp -->
-                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.4</b>&nbsp;Objects
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp;2.3</b>&nbsp;Objects
                             </a>
                         </li>
                     </ol>
                 </div>
-                <div class="col-md-6 md-offset-2 content">
+                <div class="col-md-5 offset-md-2 content">
                     <h1>Types</h1>
 <p>All variables in Keid are strongly typed, along with polymorphic behavior for object types.</p>
 <h3>Primitive Types</h3>
@@ -114,6 +126,21 @@ if x != null {
 }
 </code></pre>
 <p>To make a type nullable, just prefix it with the <code>?</code> type modifier.</p>
+<h3>Slice Types</h3>
+<p>Slices are a view of contiguous elements in an underlying heap-stored array.
+This sounds complicated at first, but slices are actually really simple!</p>
+<p>To get a slice, we need to first create an array:</p>
+<pre><code class="language-keid">let my_slice: [int32] = new int32[default(int32); 5] // initialized to have 5 elements, each equal to `default(int32)`
+</code></pre>
+<p>In this example, the slice <code>my_slice</code> has a view of the entire underlying aray.
+Slices can be derived from other slices to contain a different offset or length of elements.</p>
+<pre><code class="language-keid">let my_slice: [int32] = new int32[default(int32); 5]
+let my_view = my_slice[1:2] // this slice only has 1 element, the second element in `my_slice`
+</code></pre>
+<p>Deriving slices does not create a copy of the underlying array.
+Slices are references to memory on the heap.
+Any changes to the array via any slice will be reflected to every other slice.</p>
+<p>If you actually want a copy of an array, use <code>core::array::copy&lt;T&gt;</code>.</p>
 <h3>Type Literals</h3>
 <p>Integer literals can be written simply as <code>123</code> in decimal or <code>0xff</code> for hex. To specify the type of the integer literal, you can suffix it with the name of the type, e.g. <code>0x7f:uint8</code> or <code>100.0:float64</code>.</p>
 <pre><code class="language-keid">let w: uint32 = 0         // works

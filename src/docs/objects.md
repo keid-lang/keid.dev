@@ -1,5 +1,5 @@
 ---
-{"name": "Objects", "major": 1, "minor": 4}
+{"name": "Objects", "major": 2, "minor": 3}
 ---
 
 # Declaring Types

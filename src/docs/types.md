@@ -1,5 +1,5 @@
 ---
-{"name": "Types", "major": 1, "minor": 2}
+{"name": "Types", "major": 2, "minor": 2}
 ---
 
 # Types
@@ -42,6 +42,27 @@ if x != null {
 ```
 
 To make a type nullable, just prefix it with the `?` type modifier.
+
+### Slice Types
+
+Slices are a view of contiguous elements in an underlying heap-stored array.
+This sounds complicated at first, but slices are actually really simple!
+
+To get a slice, we need to first create an array:
+```keid
+let my_slice: [int32] = new int32[default(int32); 5] // initialized to have 5 elements, each equal to `default(int32)`
+```
+In this example, the slice `my_slice` has a view of the entire underlying aray.
+Slices can be derived from other slices to contain a different offset or length of elements.
+```keid
+let my_slice: [int32] = new int32[default(int32); 5]
+let my_view = my_slice[1:2] // this slice only has 1 element, the second element in `my_slice`
+```
+Deriving slices does not create a copy of the underlying array.
+Slices are references to memory on the heap.
+Any changes to the array via any slice will be reflected to every other slice.
+
+If you actually want a copy of an array, use `core::array::copy<T>`.
 
 ### Type Literals
 
