@@ -100,7 +100,7 @@ As an LLVM frontend, Keid is capable of targeting a wide range of processor arch
             </div>
         </div>
         <script>
-            const pathname = window.location.pathname;
+            const pathname = window.location.pathname.substring(6);
             const link = document.getElementById('link-' + pathname);
             if (link !== null) {
                 link.style.color = '#0000EE';

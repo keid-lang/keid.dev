@@ -97,7 +97,7 @@
 <h3>Primitive Types</h3>
 <ul>
 <li><code>void</code> - At compile time, <code>void</code> can be used in generic arguments or as a function return value to indicate a lack of data. Variables cannot be <code>void</code>.</li>
-<li><code>bool</code> - 8-bit integer; a value of <code>0</code> is false, a value of <code>1</code> is true, and any other value is <a href="/undefined-behavior">undefined behavior</a>.</li>
+<li><code>bool</code> - 8-bit integer; a value of <code>0</code> is false, a value of <code>1</code> is true, and any other value is <a href="undefined-behavior">undefined behavior</a>.</li>
 <li><code>char</code> - 8-bit integer representing an ASCII character</li>
 <li><code>int8</code> - 8-bit signed integer</li>
 <li><code>int16</code> - 16-bit signed integer</li>
@@ -166,7 +166,7 @@ let y = false      // works
             </div>
         </div>
         <script>
-            const pathname = window.location.pathname;
+            const pathname = window.location.pathname.substring(6);
             const link = document.getElementById('link-' + pathname);
             if (link !== null) {
                 link.style.color = '#0000EE';
