@@ -1,109 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Keid Programming Language</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-        <style>
-            li {
-                list-style-type: none;
-            }
 
-            .container {
-                max-width: 100vw !important;
-            }
+<head>
+    <title>The Keid Programming Language</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script>
+        window.location.pathname = '/book';
+    </script>
+</head>
 
-            .sidebar-link {
-                color: inherit;
-                text-decoration: none;
-            }
+<body></body>
 
-            .sidebar-link:hover {
-                color: #0000EE;
-                text-decoration: none;
-                cursor: pointer;
-            }
-
-            .sidebar {
-                background-color: #eeeeee;
-                min-height: 100vh;
-                padding: 25px 0px 0px 0px;
-            }
-
-            .content {
-                padding: 25px 0px 0px 25px;
-                margin-bottom: 100px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2 sidebar">
-                    <ol>
-                        <li>
-                            <a href="/index" class="sidebar-link" id="link-/index">
-                                <!-- triple handlebars so we can use nbsp -->
-                                <b>0.</b>&nbsp;The Keid Programming Language
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/intro" class="sidebar-link" id="link-/intro">
-                                <!-- triple handlebars so we can use nbsp -->
-                                <b>1.</b>&nbsp;Introduction
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/memory" class="sidebar-link" id="link-/memory">
-                                <!-- triple handlebars so we can use nbsp -->
-                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.1</b>&nbsp;Memory
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/undefined-behavior" class="sidebar-link" id="link-/undefined-behavior">
-                                <!-- triple handlebars so we can use nbsp -->
-                                <b>&nbsp;&nbsp;&nbsp;&nbsp;1.2</b>&nbsp;Undefined Behavior
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/basics" class="sidebar-link" id="link-/basics">
-                                <!-- triple handlebars so we can use nbsp -->
-                                <b>2.</b>&nbsp;Basics
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/hello-world" class="sidebar-link" id="link-/hello-world">
-                                <!-- triple handlebars so we can use nbsp -->
-                                <b>&nbsp;&nbsp;&nbsp;&nbsp;2.1</b>&nbsp;Hello, World!
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/types" class="sidebar-link" id="link-/types">
-                                <!-- triple handlebars so we can use nbsp -->
-                                <b>&nbsp;&nbsp;&nbsp;&nbsp;2.2</b>&nbsp;Types
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/objects" class="sidebar-link" id="link-/objects">
-                                <!-- triple handlebars so we can use nbsp -->
-                                <b>&nbsp;&nbsp;&nbsp;&nbsp;2.3</b>&nbsp;Objects
-                            </a>
-                        </li>
-                    </ol>
-                </div>
-                <div class="col-md-5 offset-md-2 content">
-                    <h1>Keid Programming Language</h1>
-<p>Check out some docs! They&#39;re on the sidebar now!</p>
- <!-- triple handlebars doesn't escape the variable, which we need here-->
-                </div>
-            </div>
-        </div>
-        <script>
-            const pathname = window.location.pathname;
-            const link = document.getElementById('link-' + pathname);
-            if (link !== null) {
-                link.style.color = '#0000EE';
-            }
-        </script>
-    </body>
 </html>

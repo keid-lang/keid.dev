@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Keid Programming Language</title>
+        <title>The Keid Programming Language Book</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
         <style>
@@ -92,11 +92,29 @@
                     </ol>
                 </div>
                 <div class="col-md-5 offset-md-2 content">
-                    <h1>Undefined Behavior</h1>
-<p>Keid is designed so that it is impossible for the compiler to output any code with undefined behavior. Any bug that causes this to happen should be reported!</p>
-<p>If you&#39;re not familiar with what undefined behavior is, <a href="https://en.wikipedia.org/wiki/Undefined_behavior">this Wikipedia page</a> on the topic is a useful introduction.</p>
-<p>As a short summary, undefined behavior (UB) is behavior that is not defined by the specification of the language. (This definition is simplified for the sake of brevity here.) For example, booleans in Keid are defined to either have a value of <code>0</code> or <code>1</code> and that any other value is <em>undefined behavior</em>. <code>2</code> is not true or false, and any boolean operations or if statements using the value will have unpredicatable <em>undefined behavior</em>.</p>
-<p>The Keid compiler makes a guarantee to the programmer that it will never output code with undefined behavior. With that being said, programmers can hack and circumvent this; perhaps with <em>unsafe</em> pointer operations. It is the responsibility of the programmer to ensure that their <em>unsafe</em> code does not actually cause UB.</p>
+                    <h1>Memory</h1>
+<p><strong>Keid is a memory-safe language.</strong> Unless there is explicitly unsafe code (e.g. calling an external C function), a Keid program should never have a segmentation fault.</p>
+<h2>Object Reference Counting</h2>
+<p>The Keid runtime manages the allocation and freeing of objects stored in the heap. Garbage collectors are a common implementation of determining when memory should be freed. This is how languages like Java, C#, Go, and many other languages free memory.</p>
+<p>Instead of garbage collection, Keid uses Object Reference Counting (ORC) in its memory model. This is used in languages like Swift and Objective-C.</p>
+<p>Each object in the heap has a metadata value representing how many active references there are to the object.</p>
+<p>When an object enters a new context, its reference count is increased by one.</p>
+<p>When an object exits the context, its reference count is decreased by one. If the result is equal to zero, meaning that there are zero references to the object, its <a href="#Destructors">destructor</a> is invoked and then its memory is freed.</p>
+<h2>Destructors</h2>
+<p>Destructors are functions that are invoked on every object immediately before they are freed.
+The compiler automatically generates destructors to free its fields.
+In Keid you can define a destructor that will be invoked before the compiler-generated part of the destructor executes.</p>
+<pre><code class="language-keid">class HandleHolder {
+    handle: Pointer&lt;void&gt;
+
+    destructor {
+        // call into the external C library to close the handle
+        unsafe {
+            libhandle_close(this.handle)
+        }
+    }
+}
+</code></pre>
  <!-- triple handlebars doesn't escape the variable, which we need here-->
                 </div>
             </div>

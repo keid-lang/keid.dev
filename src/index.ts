@@ -1,6 +1,7 @@
 import { marked } from 'marked';
 import oldfs from 'fs';
 import fs from 'fs/promises';
+import path from 'path';
 import { glob } from 'glob';
 import Handlebars from 'handlebars';
 
@@ -16,7 +17,7 @@ async function clear() {
     if (!oldfs.existsSync('docs')) {
         await fs.mkdir('docs');
     }
-    const files = await glob('./docs/**/*');
+    const files = await glob('./docs/book/**/*');
     for (const file of files) {
         await fs.unlink(file);
     }
@@ -111,11 +112,15 @@ async function main() {
             pages: sidebarPages,
         });
 
-        let new_path = 'docs' + markdownPage.url + '.html';
-        await fs.writeFile(new_path, compiled, 'utf8');
+        let newPath = 'docs/book' + markdownPage.url + '.html';
+        let newPathParent = path.dirname(newPath);
+        if (!oldfs.existsSync(newPathParent)) {
+            await fs.mkdir(newPathParent, {
+                recursive: true,
+            });
+        }
+        await fs.writeFile(newPath, compiled, 'utf8');
     }
-
-    await fs.writeFile('docs/CNAME', 'keid.dev', 'utf8');
 }
 
 main();

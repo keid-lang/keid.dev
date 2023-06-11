@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Keid Programming Language</title>
+        <title>The Keid Programming Language Book</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
         <style>
@@ -92,75 +92,8 @@
                     </ol>
                 </div>
                 <div class="col-md-5 offset-md-2 content">
-                    <h1>Types</h1>
-<p>All variables in Keid are strongly typed, along with polymorphic behavior for object types.</p>
-<h3>Primitive Types</h3>
-<ul>
-<li><code>void</code> - At compile time, <code>void</code> can be used in generic arguments or as a function return value to indicate a lack of data. Variables cannot be <code>void</code>.</li>
-<li><code>bool</code> - 8-bit integer; a value of <code>0</code> is false, a value of <code>1</code> is true, and any other value is <a href="/undefined-behavior">undefined behavior</a>.</li>
-<li><code>char</code> - 8-bit integer representing an ASCII character</li>
-<li><code>int8</code> - 8-bit signed integer</li>
-<li><code>int16</code> - 16-bit signed integer</li>
-<li><code>int32</code> - 32-bit signed integer</li>
-<li><code>int64</code> - 64-bit signed integer</li>
-<li><code>isize</code> - architecture-bit signed integer (e.g. 32-bit when targeting <code>i386</code>, 64-bit when targeting <code>x86_64</code>)</li>
-<li><code>uint8</code> - 8-bit unsigned integer</li>
-<li><code>uint16</code> - 16-bit unsigned integer</li>
-<li><code>uint32</code> - 32-bit unsigned integer</li>
-<li><code>uint64</code> - 64-bit unsigned integer</li>
-<li><code>usize</code> - architecture-bit unsigned integer (e.g. 32-bit when targeting <code>i386</code>, 64-bit when targeting <code>x86_64</code>)</li>
-<li><code>float32</code> - 32-bit IEEE-754 floating point number</li>
-<li><code>float64</code> - 64-bit IEEE-754 floating point number</li>
-</ul>
-<h3>Nullable Types</h3>
-<p>All variables in Keid need to be initialized at declaration.
-To represent an abscence of a value, Keid has nullable types.</p>
-<pre><code class="language-keid">let x: ?int32 = null
-...
-if x != null {
-    // x is guaranteed to not be null at this point
-    // thus, inside of this code block, the type of the variable `x` is `int32` and not `?int32`
-    std::io::println(&quot;x = &quot;, x.to_string())
-} else {
-    std::io::println(&quot;x is null!&quot;)
-}
-</code></pre>
-<p>To make a type nullable, just prefix it with the <code>?</code> type modifier.</p>
-<h3>Slice Types</h3>
-<p>Slices are a view of contiguous elements in an underlying heap-stored array.
-This sounds complicated at first, but slices are actually really simple!</p>
-<p>To get a slice, we need to first create an array:</p>
-<pre><code class="language-keid">let my_slice: [int32] = new int32[default(int32); 5] // initialized to have 5 elements, each equal to `default(int32)`
-</code></pre>
-<p>In this example, the slice <code>my_slice</code> has a view of the entire underlying aray.
-Slices can be derived from other slices to contain a different offset or length of elements.</p>
-<pre><code class="language-keid">let my_slice: [int32] = new int32[default(int32); 5]
-let my_view = my_slice[1:2] // this slice only has 1 element, the second element in `my_slice`
-</code></pre>
-<p>Deriving slices does not create a copy of the underlying array.
-Slices are references to memory on the heap.
-Any changes to the array via any slice will be reflected to every other slice.</p>
-<p>If you actually want a copy of an array, use <code>core::array::copy&lt;T&gt;</code>.</p>
-<h3>Type Literals</h3>
-<p>Integer literals can be written simply as <code>123</code> in decimal or <code>0xff</code> for hex. To specify the type of the integer literal, you can suffix it with the name of the type, e.g. <code>0x7f:uint8</code> or <code>100.0:float64</code>.</p>
-<pre><code class="language-keid">let w: uint32 = 0         // works
-let x: uint32 = 10:uint32 // works
-let y: uint32 = 20:uint64 // compile error
-let z = 5:float32         // works
-</code></pre>
-<p>Boolean literals are either <code>true</code> or <code>false</code>. </p>
-<pre><code class="language-keid">let x: bool = true // works
-let y = false      // works
-</code></pre>
-<p>String literals are surrounded with double quotes.</p>
-<pre><code class="language-keid">let x = &quot;hello, world!&quot;
-</code></pre>
-<p>Character literals are surrounded with single quotes.</p>
-<pre><code class="language-keid">let x = &#39;h&#39;
-</code></pre>
-<p>Nullable types can be assigned the null literal.</p>
-<pre><code class="language-keid">let x: ?uint8 = null
-</code></pre>
+                    <h1>Keid Programming Language</h1>
+<p>Check out some docs! They&#39;re on the sidebar now!</p>
  <!-- triple handlebars doesn't escape the variable, which we need here-->
                 </div>
             </div>
